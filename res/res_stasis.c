@@ -792,7 +792,7 @@ static void control_unlink(struct stasis_app_control *control)
 	ao2_cleanup(control);
 }
 
-static struct ast_bridge *bridge_create_common(const char *type, const char *name, const char *id, int invisible)
+static struct ast_bridge *bridge_create_common(const char *type, const char *name, const char *id, int invisible, const int *send_sdp_label)
 {
 	struct ast_bridge *bridge;
 	char *requested_type, *requested_types = ast_strdupa(S_OR(type, "mixing"));
@@ -845,17 +845,19 @@ static struct ast_bridge *bridge_create_common(const char *type, const char *nam
 		}
 	}
 
+	ast_log(LOG_ERROR, "send_sdp_label %d\n", send_sdp_label);
+
 	return bridge;
 }
 
-struct ast_bridge *stasis_app_bridge_create(const char *type, const char *name, const char *id)
+struct ast_bridge *stasis_app_bridge_create(const char *type, const char *name, const char *id, const int *send_sdp_label)
 {
-	return bridge_create_common(type, name, id, 0);
+	return bridge_create_common(type, name, id, 0, send_sdp_label);
 }
 
 struct ast_bridge *stasis_app_bridge_create_invisible(const char *type, const char *name, const char *id)
 {
-	return bridge_create_common(type, name, id, 1);
+	return bridge_create_common(type, name, id, 1, 0);
 }
 
 void stasis_app_bridge_destroy(const char *bridge_id)

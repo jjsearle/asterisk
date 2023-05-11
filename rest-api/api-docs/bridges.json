@@ -51,6 +51,15 @@
 							"required": false,
 							"allowMultiple": false,
 							"dataType": "string"
+						},
+						{
+							"name": "sendSDPLabel",
+							"description": "Send stream labels in SDP.",
+							"paramType": "query",
+							"required": false,
+							"allowMultiple": false,
+							"dataType": "boolean",
+							"defaultValue": false
 						}
 					]
 				}

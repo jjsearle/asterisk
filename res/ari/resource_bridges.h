@@ -58,6 +58,8 @@ struct ast_ari_bridges_create_args {
 	const char *bridge_id;
 	/*! Name to give to the bridge being created. */
 	const char *name;
+	/*! Should bridge send labels in SDP. */
+	const char *send_sdp_label;
 };
 /*!
  * \brief Body parsing function for /bridges.
@@ -88,6 +90,8 @@ struct ast_ari_bridges_create_with_id_args {
 	const char *bridge_id;
 	/*! Set the name of the bridge. */
 	const char *name;
+	/*! Should bridge send labels in SDP. */
+	const char *send_sdp_label;
 };
 /*!
  * \brief Body parsing function for /bridges/{bridgeId}.

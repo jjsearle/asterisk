@@ -122,6 +122,10 @@ int ast_ari_bridges_create_parse_body(
 	if (field) {
 		args->name = ast_json_string_get(field);
 	}
+	field = ast_json_object_get(body, "sendSDPLabel");
+	if (field) {
+		args->send_sdp_label = ast_json_is_true(field);
+	}
 	return 0;
 }
 
@@ -155,6 +159,9 @@ static void ast_ari_bridges_create_cb(
 		} else
 		if (strcmp(i->name, "name") == 0) {
 			args.name = (i->value);
+		} else
+		if (strcmp(i->name, "sendSDPLabel") == 0) {
+			args.send_sdp_label = (i->value);
 		} else
 		{}
 	}

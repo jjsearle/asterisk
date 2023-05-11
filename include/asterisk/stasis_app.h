@@ -690,7 +690,7 @@ int stasis_app_control_queue_control(struct stasis_app_control *control,
  * \return New bridge.
  * \retval NULL on error.
  */
-struct ast_bridge *stasis_app_bridge_create(const char *type, const char *name, const char *id);
+struct ast_bridge *stasis_app_bridge_create(const char *type, const char *name, const char *id, const int *send_sdp_label);
 
 /*!
  * \brief Create an invisible bridge of the specified type.
